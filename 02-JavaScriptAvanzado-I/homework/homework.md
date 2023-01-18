@@ -27,6 +27,28 @@ c(8, 9, 10);
 console.log(b);
 console.log(x);
 ```
+<!--              a, b, c
+ejecuta funcion C(8, 9, 10)
+	declara X y le asigna = 10
+	imprime X que es 10
+	imprime a que es 8			  a, b, c
+	crea funcion F que toma los 3 argumentos (8, 9, 10)
+	ejecuta funcion F(8, 9, 10)
+		b se transforma en a, que es 8
+		imprime b, que es 8
+		b se transforma en c, que es 10
+		declara X y le asigna = 5
+	imprime b, que es 9
+imprime b, que es 10
+imprime x, que es 1
+
+En limpio:
+imprime 10
+imprime 8
+imprime 8
+imprime 9
+imprime 10
+imprime 1 -->
 
 ```javascript
 console.log(bar);
@@ -38,6 +60,10 @@ function foo() {
 var bar = 1;
 baz = 2;
 ```
+<!-- undefined
+baz is not declared
+imprime Hola! ** Esto no se llegó a ejecutar ** -->
+
 
 ```javascript
 var instructor = 'Tony';
@@ -46,6 +72,7 @@ if (true) {
 }
 console.log(instructor);
 ```
+<!-- imprime "Franco" -->
 
 ```javascript
 var instructor = 'Tony';
@@ -58,6 +85,14 @@ console.log(instructor);
 })();
 console.log(instructor);
 ```
+<!-- imprime "Tony"
+Uncaught error, ( not expected. ** Esto no sucedió, creí que el parentesis iba a ser tomado como error de sintaxis **
+
+Solucion:
+imprime "Tony"
+imprime "Franco"
+imprime "Tony" -->
+
 
 ```javascript
 var instructor = 'Tony';
@@ -71,28 +106,32 @@ if (true) {
 console.log(instructor);
 console.log(pm);
 ```
+<!-- imprime "The Flash"
+imprime "Reverse Flash"
+imprime "The Flash"
+imprime "Reverse Flash" ** La LET no se volvió a declarar ni se pisó, siguió siendo "Franco" ** -->
 
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3"           // 2
+"2" * "3"         // 6
+4 + 5 + "px"      // 45px
+"$" + 4 + 5       // $45
+"4" - 2           // 2
+"4px" - 2         // Error?
+7 / 0             // Can't divide by 0
+{}[0]             // Undefined
+parseInt("09")    // 9
+5 && 2            // No se... false?
+2 && 5            // No se... false?
+5 || 0            // No se... false?
+0 || 5            // No se... false?
+[3]+[3]-[10]      // No se
+3>2>1             // False, porque primero resuelve la comparación de la derecha 2>1 y se vuelve True, entonces hace 3>True
+[] == ![]         // Undefined
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -114,6 +153,7 @@ function test() {
 
 test();
 ```
+   
 
 Y el de este código? :
 
