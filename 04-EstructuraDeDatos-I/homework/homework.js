@@ -14,9 +14,53 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
 
-function nFactorial(n) {}
+function nFactorial(n) {
+  if (n === 1) {
+    return n;
+  }
+  return n * nFactorial(n - 1);
+}
 
-function nFibonacci(n) {}
+// Solucion 1 Fibonacci:
+// function nFibonacci(n, numeroA = 0, numeroB = 1, contador = 0) {
+//   console.log("[N = ", n, " Contador: ", contador," Numero A: ", numeroA, " Numero B: ", numeroB, " Fibonacci actual: ", numeroA + numeroB, " ]");
+
+//   if (n < 2) {
+//     console.log("Fibonacci de ", n, " es: ", n);
+//     return n;
+//   }
+
+//   if (contador === n) {
+//     console.log("Fibonacci de ", n, " es: ", numeroA + numeroB);
+//     return (numeroA + numeroB);
+//   }
+
+//   contador += 1;
+//   if (contador > 2) {
+//     var numActual = numeroA + numeroB;
+//     numeroA = numeroB;
+//     numeroB = numActual;
+//   }
+
+//   return nFibonacci(n, numeroA, numeroB, contador);
+// }
+
+// Solucion 2 Fibonacci:
+function nFibonacci(n, contador = 0, listaFibonacci = [0, 1]) {
+  console.log("[ N = ", n, " Contador: ", contador," Lista: ", listaFibonacci, " Fibonacci actual: ", listaFibonacci[contador-1]+ listaFibonacci[contador-2], " ]");
+  if (n < 2) {
+    return n;
+  }
+  if (contador === n) {
+    return listaFibonacci[n];
+  }
+  contador +=1;
+  if (contador > 1 ) {
+    listaFibonacci.push(Number(listaFibonacci[contador-1] + listaFibonacci[contador-2]));
+  }
+  console.log("[N = ", n, " Contador: ", contador," Lista: ", listaFibonacci, " Fibonacci actual: ", listaFibonacci[contador-1]+ listaFibonacci[contador-2], " ]");
+  return nFibonacci(n, contador, listaFibonacci);
+}
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -27,7 +71,15 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
-function Queue() {}
+class Queue {
+  constructor() {
+    this.cola = [];
+  }
+  enqueue(newElement) { return this.cola.unshift(newElement); };
+  dequeue() { return this.cola.pop(); };
+  size() { return this.cola.length;}
+
+}
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
